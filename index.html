@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abyssinia Mesob Al - Premium Ethiopian & Western Cuisine</title>
+    <!-- Google Fonts for the elegant luxury look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #051423;
+            --bg-card: #081d33;
+            --gold: #c5a880;
+            --gold-hover: #e0c39e;
+            --text-light: #ffffff;
+            --text-muted: #a0b2c6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .hero-title, .logo {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 20, 35, 0.95);
+            border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Hamburger Menu Icon */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1001;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background-color: var(--gold);
+            transition: 0.3s;
+        }
+
+        /* Navigation Drawer Overlay */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--bg-card);
+            border-left: 2px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            transition: 0.4s ease-in-out;
+            z-index: 1000;
+        }
+
+        .nav-menu.active {
+            right: 0;
+        }
+
+        .nav-menu a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--gold);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(5, 20, 35, 0.7), rgba(5, 20, 35, 0.85)), url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2069') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--gold);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-size: 64px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            border: 1px solid var(--gold);
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-hover);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* --- FEATURES SECTION --- */
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 80px 50px;
+            background-color: var(--bg-dark);
+            text-align: center;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.1);
+        }
+
+        .feature-item {
+            max-width: 300px;
+        }
+
+        .feature-item i {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .feature-item p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* --- MENU SECTION --- */
+        .menu-section {
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .section-header p {
+            color: var(--gold);
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .menu-category {
+            margin-bottom: 60px;
+        }
+
+        .category-title {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.3);
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(197, 168, 128, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .menu-info {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .menu-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .menu-item-name {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .menu-item-price {
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .menu-desc {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* --- BOOKING & CONTACT SECTION --- */
+        .booking-section {
+            background-color: var(--bg-card);
+            padding: 80px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 50px auto;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .booking-form input, .booking-form select, .booking-form textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-dark);
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            color: white;
+            border-radius: 4px;
+        }
+
+        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
+            outline: 1px solid var(--gold);
+        }
+
+        /* --- INTELLIGENT AI CHATBOT INTERFACE --- */
+        #ai-chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+        }
+
+        .chat-btn {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: 0.3s;
+        }
+
+        .chat-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--gold-hover);
+        }
+
+        .chat-window {
+            position: absolute;
+            bottom: 75px;
+            right: 0;
+            width: 350px;
+            height: 450px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.6);
+        }
+
+        .chat-window.active {
+            display: flex;
+        }
+
+        .chat-header {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            padding: 15px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 14px;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .msg.bot {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .msg.user {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .chat-input-area {
+            display: flex;
+            border-top: 1px solid rgba(197, 168, 128, 0.3);
+            background: var(--bg-dark);
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            color: white;
+            outline: none;
+        }
+
+        .chat-input-area button {
+            background: transparent;
+            border: none;
+            color: var(--gold);
+            padding: 0 20px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        /* Responsive changes */
+        @media (max-width: 768px) {
+            .booking-section { grid-template-columns: 1fr; }
+            .features { flex-direction: column; gap: 40px; }
+            .hero-title { font-size: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="logo">Abyssinia Mesob Al</div>
+        
+        <!-- Hamburger Icon Menu Trigger -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Navigation Drawer Links -->
+        <nav class="nav-menu" id="navMenu">
+            <a href="#" onclick="toggleMenu()">Home</a>
+            <a href="#menu" onclick="toggleMenu()">Menu</a>
+            <a href="#about" onclick="toggleMenu()">About Us</a>
+            <a href="#booking" onclick="toggleMenu()">Location</a>
+            <a href="#booking" onclick="toggleMenu()">Contact / Booking</a>
+        </nav>
+    </header>
+
+    <!-- HERO / BANNER SECTION -->
+    <section class="hero">
+        <p class="hero-subtitle">Welcome to Our Restaurant</p>
+        <h1 class="hero-title">Abyssinia Mesob Al</h1>
+        <div class="btn-container">
+            <a href="#menu" class="btn btn-gold">Discover Menu ↗</a>
+            <a href="#booking" class="btn btn-outline">Book A Table ↗</a>
+        </div>
+    </section>
+
+    <!-- FEATURES INFOGRAPHIC SECTION -->
+    <section class="features" id="about">
+        <div class="feature-item">
+            <i class="fa-solid fa-utensils"></i>
+            <h3>Fresh Ingredients</h3>
+            <p>Authentic spices imported straight from Ethiopia matched with high quality local produce.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-fire-burner"></i>
+            <h3>Expert Chefs</h3>
+            <p>Crafting masterworks from classic Doro Wat slow-cooks to exquisite gourmet Western burgers.</p>
+        </div>
+        <div class="feature-item">
+            <i class="fa-solid fa-wine-glass-vessel"></i>
+            <h3>Curated Drinks</h3>
+            <p>A broad balance of refreshing soft beverages alongside beautifully mixed signature cocktails.</p>
+        </div>
+    </section>
+
+    <!-- MENU SECTION -->
+    <section class="menu-section" id="menu">
+        <div class="section-header">
+            <p>Why Choose Us</p>
+            <h2>Seasonal & Delicious Food Menus</h2>
+        </div>
+
+        <!-- CATEGORY: ETHIOPIAN FOOD -->
+        <div class="menu-category">
+            <h3 class="category-title">Ethiopian Food</h3>
+            <div class="menu-grid">
+                <!-- Item 1 -->
+                <div class="menu-card">
+                    <img src="beyaynt.jpg" alt="Ethiopian Beyaynet" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Ethiopian Beyaynet</span>
+                            <span class="menu-item-price">$18.00</span>
+                        </div>
+                        <p class="menu-desc">A colorful assortment of vibrant vegan stews, lentils, and greens elegantly served atop fresh, tangy Injera sourdough.</p>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="menu-card">
+                    <img src="tibs.jpg" alt="Tibs" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Tibs</span>
+                            <span class="menu-item-price">$20.00</span>
+                        </div>
+                        <p class="menu-desc">Tender pan-seared beef or lamb cubes sautéed flawlessly with red onions, garlic, jalapeños, and spiced clarified butter.</p>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="menu-card">
+                    <img src="kitfo.jpg" alt="Kitfo" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Kitfo</span>
+                            <span class="menu-item-price">$22.00</span>
+                        </div>
+                        <p class="menu-desc">Finely minced lean beef seasoned with premium mitmita spice blend and niter kibbeh. Served raw, rare, or fully cooked.</p>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="menu-card">
+                    <img src="dorowot.jpg" alt="Doro Wat" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Doro Wat</span>
+                            <span class="menu-item-price">$24.00</span>
+                        </div>
+                        <p class="menu-desc">The ultimate celebratory rich chicken stew, slow-cooked with berbere spices, served with boiled eggs and fresh homemade cheese.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY: WESTERN FOOD -->
+        <div class="menu-category">
+            <h3 class="category-title">Western Food</h3>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" alt="Gourmet Burger" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Abyssinia Premium Burger</span>
+                            <span class="menu-item-price">$16.50</span>
+                        </div>
+                        <p class="menu-desc">Flame-grilled angus beef patty topped with melted cheddar, crisp bibb lettuce, ripe tomatoes, and house craft sauce on brioche.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600" alt="Chef's Salad" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Classic Grilled Salmon Platter</span>
+                            <span class="menu-item-price">$26.00</span>
+                        </div>
+                        <p class="menu-desc">Crisp skin salmon fillet served alongside garlic mashed potatoes, roasted seasonal greens, and a buttery white wine sauce reduction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATEGORY: DRINKS & COCKTAILS -->
+        <div class="menu-category">
+            <h3 class="category-title">Soft Drinks, Cocktails & Alcohol</h3>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=600" alt="Cocktails" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Habesha Sunset Cocktail</span>
+                            <span class="menu-item-price">$12.00</span>
+                        </div>
+                        <p class="menu-desc">An elegant mix of local premium gin, fresh orange, passion fruit hints, and a float of sweet pomegranate syrup.</p>
+                    </div>
+                </div>
+                <div class="menu-card">
+                    <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?q=80&w=600" alt="Soft Drinks" class="menu-img">
+                    <div class="menu-info">
+                        <div class="menu-title-row">
+                            <span class="menu-item-name">Assorted Refreshments & Sodas</span>
+                            <span class="menu-item-price">$3.50</span>
+                        </div>
+                        <p class="menu-desc">Ice-cold Coca-Cola varieties, sparkling natural sodas, and fresh squeezed seasonal fruit juices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING, CONTACT & LOCATION SECTION -->
+    <section class="booking-section" id="booking">
+        <div class="contact-info">
+            <h3>Visit & Contact Us</h3>
+            <p><i class="fa-solid fa-location-dot"></i> 100 Bole Road, Next to Meskel Square, Addis Ababa, Ethiopia</p>
+            <p><i class="fa-solid fa-phone"></i> +251 11 664 0700</p>
+            <p><i class="fa-solid fa-envelope"></i> info@abyssiniamesobal.com</p>
+            <p><i class="fa-solid fa-clock"></i> Open Daily: 11:00 AM - 11:00 PM</p>
+        </div>
+        <div>
+            <form class="booking-form" onsubmit="event.preventDefault(); alert('Reservation submitted successfully!');">
+                <h3 style="font-family:'Cormorant Garamond', serif; font-size:28px; color:var(--gold); margin-bottom:10px;">Book A Table</h3>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <select required>
+                    <option value="" disabled selected>Number of Guests</option>
+                    <option value="1">1 Person</option>
+                    <option value="2">2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4+">4+ People</option>
+                </select>
+                <input type="date" required>
+                <button type="submit" class="btn btn-gold" style="border:none;">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- AI TRAINED CHATBOT WIDGET -->
+    <div id="ai-chat-widget">
+        <div class="chat-btn" onclick="toggleChat()">
+            <i class="fa-solid fa-robot"></i>
+        </div>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <i class="fa-solid fa-circle-nodes"></i> Abyssinia AI Assistant
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="msg bot">Hello! Welcome to Abyssinia Mesob Al. I am fully trained on our complete menu, location details, and active booking processes. How can I help you today?</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Ask about food, location, booking..." onkeypress="handleChatKey(event)">
+                <button onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT ACTIONS & INTUITIVE AI LOGIC ENGINE -->
+    <script>
+        // Hamburger Menu Toggle Control Logic
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+
+        // AI Chat UI Toggle
+        function toggleChat() {
+            const win = document.getElementById('chatWindow');
+            win.classList.toggle('active');
+        }
+
+        function handleChatKey(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        }
+
+        // Tightly Trained Knowledge-Base for Instant Client Responses
+        const aiKnowledgeBase = [
+            { keywords: ['location', 'where', 'address', 'find you', 'place', 'map'], reply: "We are proudly located at 100 Bole Road, right next to Meskel Square in the heart of Addis Ababa, Ethiopia!" },
+            { keywords: ['book', 'reserve', 'table', 'reservation', 'appointment'], reply: "You can lock in your reservation right here! Please use our 'Book A Table' contact form just on the left, or tell me your name, phone number, and desired date to initiate." },
+            { keywords: ['ethiopian', 'beyaynet', 'tibs', 'kitfo', 'doro', 'injera'], reply: "Our Ethiopian selection features traditional specialties: Beyaynet (beyaynt.jpg, $18), juicy sizzling Tibs (tibs.jpg, $20), prime spiced Kitfo (kitfo.jpg, $22), and legendary celebratory Doro Wat (dorowot.jpg, $24)." },
+            { keywords: ['western', 'burger', 'humburger', 'hamburger', 'salmon', 'american'], reply: "Craving Western? We serve the exceptional flame-grilled Abyssinia Premium Burger ($16.50) topped with crisp veggies on brioche, and our expertly seasoned Grilled Salmon Platter ($26.00)." },
+            { keywords: ['drink', 'cocktail', 'alcohol', 'beer', 'soft drink', 'soda', 'coke', 'wine'], reply: "We have an extensive array of beverages! Try our custom 'Habesha Sunset Cocktail' ($12) made with premium house gin, or pick from our ice-cold range of Soft Drinks and local Sodas ($3.50)." },
+            { keywords: ['hours', 'open', 'time', 'close'], reply: "Abyssinia Mesob Al is welcoming guests daily from 11:00 AM until 11:00 PM." }
+        ];
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const container = document.getElementById('chatMessages');
+            const query = input.value.trim().toLowerCase();
+            
+            if (!query) return;
+
+            // Render User Input Message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'msg user';
+            userMsg.textContent = input.value;
+            container.appendChild(userMsg);
+            
+            input.value = '';
+            container.scrollTop = container.scrollHeight;
+
+            // Generate AI Engine Response matches based on local knowledge matrix
+            setTimeout(() => {
+                let fallbackReply = "I am trained exclusively on Abyssinia Mesob Al! I can assist you with our Ethiopian menu (Beyaynet, Tibs, Kitfo, Doro Wat), Western Burgers, drink pairings, or our location details next to Meskel Square.";
+                
+                for (let knowledge of aiKnowledgeBase) {
+                    if (knowledge.keywords.some(keyword => query.includes(keyword))) {
+                        fallbackReply = knowledge.reply;
+                        break;
+                    }
+                }
+
+                const botMsg = document.createElement('div');
+                botMsg.className = 'msg bot';
+                botMsg.textContent = fallbackReply;
+                container.appendChild(botMsg);
+                container.scrollTop = container.scrollHeight;
+            }, 550);
+        }
+    </script>
+</body>
+</html>
