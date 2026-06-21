@@ -204,9 +204,59 @@
             line-height: 1.6;
         }
 
+        /* --- BOOKING & CONTACT SECTION --- */
+        .booking-section {
+            background-color: var(--bg-card);
+            padding: 80px 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 50px auto;
+            border: 1px solid rgba(197, 168, 128, 0.2);
+        }
+
+        .contact-info h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            color: var(--text-muted);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .booking-form input, .booking-form select, .booking-form textarea {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-dark);
+            border: 1px solid rgba(197, 168, 128, 0.4);
+            color: white;
+            border-radius: 4px;
+        }
+
+        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
+            outline: 1px solid var(--gold);
+        }
+
         /* --- MENU SECTION --- */
         .menu-section {
-            padding: 100px 50px;
+            padding: 60px 50px 100px 50px;
             text-align: center;
         }
 
@@ -217,28 +267,44 @@
             font-size: 20px;
         }
 
+        /* Adjusted: Medium size, not bold */
         .section-header h2 {
-            font-size: 42px;
+            font-size: 28px;
+            font-weight: 400; 
             letter-spacing: 2px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-transform: uppercase;
         }
 
-        /* --- NEW MENU FILTER BUTTONS --- */
-        .menu-tabs {
+        /* --- STYLED CUSTOM TWO-ROW FILTER LAYOUT --- */
+        .menu-tabs-wrapper {
+            max-width: 600px;
+            margin: 0 auto 50px auto;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 60px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tabs-row-top {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .tabs-row-top .tab-btn {
+            flex: 1; /* Makes them side-by-side equal sizes */
+        }
+
+        .tabs-row-bottom .tab-btn {
+            width: 100%; /* Spans across underneath them */
         }
 
         .tab-btn {
             background: transparent;
             color: var(--text-light);
             border: 1px solid rgba(197, 168, 128, 0.3);
-            padding: 12px 30px;
-            font-size: 14px;
+            padding: 12px 25px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 2px;
             cursor: pointer;
@@ -256,12 +322,11 @@
             color: var(--bg-dark);
             border-color: var(--gold);
             font-weight: 600;
-            box-shadow: 0 4px 15px rgba(197, 168, 128, 0.2);
         }
 
         /* Menu container animation styling */
         .menu-category {
-            display: none; /* Hidden by default, toggled via JS */
+            display: none; 
             opacity: 0;
             transform: translateY(15px);
             transition: all 0.5s ease-in-out;
@@ -337,56 +402,6 @@
             color: var(--text-muted);
             font-size: 13px;
             line-height: 1.5;
-        }
-
-        /* --- BOOKING & CONTACT SECTION --- */
-        .booking-section {
-            background-color: var(--bg-card);
-            padding: 80px 50px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 50px auto;
-            border: 1px solid rgba(197, 168, 128, 0.2);
-        }
-
-        .contact-info h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: var(--gold);
-        }
-
-        .contact-info p {
-            margin-bottom: 15px;
-            color: var(--text-muted);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .contact-info i {
-            color: var(--gold);
-        }
-
-        .booking-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .booking-form input, .booking-form select, .booking-form textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--bg-dark);
-            border: 1px solid rgba(197, 168, 128, 0.4);
-            color: white;
-            border-radius: 4px;
-        }
-
-        .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
-            outline: 1px solid var(--gold);
         }
 
         /* --- INTELLIGENT AI CHATBOT INTERFACE --- */
@@ -506,8 +521,6 @@
             .booking-section { grid-template-columns: 1fr; }
             .features { flex-direction: column; gap: 40px; }
             .hero-title { font-size: 40px; }
-            .menu-tabs { gap: 10px; }
-            .tab-btn { padding: 10px 20px; font-size: 12px; }
         }
     </style>
 </head>
@@ -527,10 +540,10 @@
         <!-- Navigation Drawer Links -->
         <nav class="nav-menu" id="navMenu">
             <a href="#" onclick="toggleMenu()">Home</a>
+            <a href="#booking" onclick="toggleMenu()">Contact / Booking</a>
+            <a href="#booking" onclick="toggleMenu()">Location</a>
             <a href="#menu" onclick="toggleMenu()">Menu</a>
             <a href="#about" onclick="toggleMenu()">About Us</a>
-            <a href="#booking" onclick="toggleMenu()">Location</a>
-            <a href="#booking" onclick="toggleMenu()">Contact / Booking</a>
         </nav>
     </header>
 
@@ -563,25 +576,56 @@
         </div>
     </section>
 
-    <!-- MENU SECTION -->
+    <!-- POSITIONED ON TOP: BOOKING, CONTACT & LOCATION SECTION -->
+    <section class="booking-section" id="booking">
+        <div class="contact-info">
+            <h3>Visit & Contact Us</h3>
+            <p><i class="fa-solid fa-location-dot"></i> 100 Bole Road, Next to Meskel Square, Addis Ababa, Ethiopia</p>
+            <p><i class="fa-solid fa-phone"></i> +251 11 664 0700</p>
+            <p><i class="fa-solid fa-envelope"></i> info@abyssiniamesobal.com</p>
+            <p><i class="fa-solid fa-clock"></i> Open Daily: 11:00 AM - 11:00 PM</p>
+        </div>
+        <div>
+            <form class="booking-form" onsubmit="event.preventDefault(); alert('Reservation submitted successfully!');">
+                <h3 style="font-family:'Cormorant Garamond', serif; font-size:28px; color:var(--gold); margin-bottom:10px;">Book A Table</h3>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number" required>
+                <select required>
+                    <option value="" disabled selected>Number of Guests</option>
+                    <option value="1">1 Person</option>
+                    <option value="2">2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4+">4+ People</option>
+                </select>
+                <input type="date" required>
+                <button type="submit" class="btn btn-gold" style="border:none;">Submit Booking</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- POSITIONED UNDERNEATH: MENU SECTION -->
     <section class="menu-section" id="menu">
         <div class="section-header">
             <p>Why Choose Us</p>
-            <h2>Seasonal & Delicious Food Menus</h2>
+            <h2>Delicious Food Menu</h2>
         </div>
 
-        <!-- SIDE-BY-SIDE INTERACTIVE TABS -->
-        <div class="menu-tabs">
-            <button class="tab-btn active" onclick="filterMenu('ethiopian', this)">Ethiopian Food</button>
-            <button class="tab-btn" onclick="filterMenu('western', this)">Western Food</button>
-            <button class="tab-btn" onclick="filterMenu('drinks', this)">Drinks & Alcohol</button>
+        <!-- NEW SUBSECTION TABS CONTAINER -->
+        <div class="menu-tabs-wrapper">
+            <div class="tabs-row-top">
+                <button class="tab-btn active" onclick="filterMenu('ethiopian', this)">Ethiopian Food</button>
+                <button class="tab-btn" onclick="filterMenu('western', this)">Western Food</button>
+            </div>
+            <div class="tabs-row-bottom">
+                <button class="tab-btn" onclick="filterMenu('drinks', this)">Drinks & Alcohol</button>
+            </div>
         </div>
 
         <!-- CATEGORY: ETHIOPIAN FOOD -->
         <div id="ethiopian" class="menu-category active-category">
             <h3 class="category-title">Ethiopian Food</h3>
             <div class="menu-grid">
-                <!-- Item 1 -->
                 <div class="menu-card">
                     <img src="beyaynt.jpg" alt="Ethiopian Beyaynet" class="menu-img">
                     <div class="menu-info">
@@ -592,7 +636,6 @@
                         <p class="menu-desc">A colorful assortment of vibrant vegan stews, lentils, and greens elegantly served atop fresh, tangy Injera sourdough.</p>
                     </div>
                 </div>
-                <!-- Item 2 -->
                 <div class="menu-card">
                     <img src="tibs.jpg" alt="Tibs" class="menu-img">
                     <div class="menu-info">
@@ -603,7 +646,6 @@
                         <p class="menu-desc">Tender pan-seared beef or lamb cubes sautéed flawlessly with red onions, garlic, jalapeños, and spiced clarified butter.</p>
                     </div>
                 </div>
-                <!-- Item 3 -->
                 <div class="menu-card">
                     <img src="kitfo.jpg" alt="Kitfo" class="menu-img">
                     <div class="menu-info">
@@ -614,7 +656,6 @@
                         <p class="menu-desc">Finely minced lean beef seasoned with premium mitmita spice blend and niter kibbeh. Served raw, rare, or fully cooked.</p>
                     </div>
                 </div>
-                <!-- Item 4 -->
                 <div class="menu-card">
                     <img src="dorowot.jpg" alt="Doro Wat" class="menu-img">
                     <div class="menu-info">
@@ -643,7 +684,7 @@
                     </div>
                 </div>
                 <div class="menu-card">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600" alt="Chef's Salad" class="menu-img">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600" alt="Salmon Platter" class="menu-img">
                     <div class="menu-info">
                         <div class="menu-title-row">
                             <span class="menu-item-name">Classic Grilled Salmon Platter</span>
@@ -683,34 +724,6 @@
         </div>
     </section>
 
-    <!-- BOOKING, CONTACT & LOCATION SECTION -->
-    <section class="booking-section" id="booking">
-        <div class="contact-info">
-            <h3>Visit & Contact Us</h3>
-            <p><i class="fa-solid fa-location-dot"></i> 100 Bole Road, Next to Meskel Square, Addis Ababa, Ethiopia</p>
-            <p><i class="fa-solid fa-phone"></i> +251 11 664 0700</p>
-            <p><i class="fa-solid fa-envelope"></i> info@abyssiniamesobal.com</p>
-            <p><i class="fa-solid fa-clock"></i> Open Daily: 11:00 AM - 11:00 PM</p>
-        </div>
-        <div>
-            <form class="booking-form" onsubmit="event.preventDefault(); alert('Reservation submitted successfully!');">
-                <h3 style="font-family:'Cormorant Garamond', serif; font-size:28px; color:var(--gold); margin-bottom:10px;">Book A Table</h3>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Email Address" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <select required>
-                    <option value="" disabled selected>Number of Guests</option>
-                    <option value="1">1 Person</option>
-                    <option value="2">2 People</option>
-                    <option value="3">3 People</option>
-                    <option value="4+">4+ People</option>
-                </select>
-                <input type="date" required>
-                <button type="submit" class="btn btn-gold" style="border:none;">Submit Booking</button>
-            </form>
-        </div>
-    </section>
-
     <!-- AI TRAINED CHATBOT WIDGET -->
     <div id="ai-chat-widget">
         <div class="chat-btn" onclick="toggleChat()">
@@ -730,33 +743,26 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT ACTIONS & INTUITIVE AI LOGIC ENGINE -->
+    <!-- JAVASCRIPT CONTROL ENGINE -->
     <script>
-        // Hamburger Menu Toggle Control Logic
         function toggleMenu() {
             const menu = document.getElementById('navMenu');
             menu.classList.toggle('active');
         }
 
-        // Live Choice Category Filter Switches
         function filterMenu(categoryId, element) {
-            // Remove active style from all tab buttons
             const tabs = document.querySelectorAll('.tab-btn');
             tabs.forEach(tab => tab.classList.remove('active'));
             
-            // Add active style to the clicked choice button
             element.classList.add('active');
 
-            // Hide all categories first
             const categories = document.querySelectorAll('.menu-category');
             categories.forEach(cat => cat.classList.remove('active-category'));
 
-            // Show selected category with smooth transition animation layout
             const activeCategory = document.getElementById(categoryId);
             activeCategory.classList.add('active-category');
         }
 
-        // AI Chat UI Toggle
         function toggleChat() {
             const win = document.getElementById('chatWindow');
             win.classList.toggle('active');
@@ -766,10 +772,9 @@
             if (e.key === 'Enter') sendChatMessage();
         }
 
-        // Tightly Trained Knowledge-Base for Instant Client Responses
         const aiKnowledgeBase = [
             { keywords: ['location', 'where', 'address', 'find you', 'place', 'map'], reply: "We are proudly located at 100 Bole Road, right next to Meskel Square in the heart of Addis Ababa, Ethiopia!" },
-            { keywords: ['book', 'reserve', 'table', 'reservation', 'appointment'], reply: "You can lock in your reservation right here! Please use our 'Book A Table' contact form just on the left, or tell me your name, phone number, and desired date to initiate." },
+            { keywords: ['book', 'reserve', 'table', 'reservation', 'appointment'], reply: "You can lock in your reservation right here! Please use our 'Book A Table' contact form just on top of the menu layout." },
             { keywords: ['ethiopian', 'beyaynet', 'tibs', 'kitfo', 'doro', 'injera'], reply: "Our Ethiopian selection features traditional specialties: Beyaynet (beyaynt.jpg, $18), juicy sizzling Tibs (tibs.jpg, $20), prime spiced Kitfo (kitfo.jpg, $22), and legendary celebratory Doro Wat (dorowot.jpg, $24)." },
             { keywords: ['western', 'burger', 'humburger', 'hamburger', 'salmon', 'american'], reply: "Craving Western? We serve the exceptional flame-grilled Abyssinia Premium Burger ($16.50) topped with crisp veggies on brioche, and our expertly seasoned Grilled Salmon Platter ($26.00)." },
             { keywords: ['drink', 'cocktail', 'alcohol', 'beer', 'soft drink', 'soda', 'coke', 'wine'], reply: "We have an extensive array of beverages! Try our custom 'Habesha Sunset Cocktail' ($12) made with premium house gin, or pick from our ice-cold range of Soft Drinks and local Sodas ($3.50)." },
@@ -783,7 +788,6 @@
             
             if (!query) return;
 
-            // Render User Input Message
             const userMsg = document.createElement('div');
             userMsg.className = 'msg user';
             userMsg.textContent = input.value;
@@ -792,7 +796,6 @@
             input.value = '';
             container.scrollTop = container.scrollHeight;
 
-            // Generate AI Engine Response matches based on local knowledge matrix
             setTimeout(() => {
                 let fallbackReply = "I am trained exclusively on Abyssinia Mesob Al! I can assist you with our Ethiopian menu (Beyaynet, Tibs, Kitfo, Doro Wat), Western Burgers, drink pairings, or our location details next to Meskel Square.";
                 
